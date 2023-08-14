@@ -10,4 +10,6 @@ class ManagerColors {
   static const Color appBarBackgroundColorDark = Colors.white;
   static const Color disabledColorLight = Colors.white;
   static const Color disabledColorDark = Colors.white;
+  static const Color white = Colors.white;
+  static const Color black = Colors.black;
 }
