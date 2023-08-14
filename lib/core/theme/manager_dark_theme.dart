@@ -14,13 +14,12 @@ ThemeData managerDarkThemeData() {
     scaffoldBackgroundColor: ManagerColors.scaffoldBackgroundColorDark,
     textTheme: ManagerTextThemeDark(),
     appBarTheme: AppBarTheme(
-      backgroundColor: ManagerColors.appBarBackgroundColorDark,
+      backgroundColor: ManagerColors.transparent,
       elevation: Constants.elevationAppBar,
       centerTitle: true,
       titleTextStyle: boldTextStyle(
         color: ManagerColors.black,
         fontSize: ManagerFontSize.s18,
-        fontFamily: ManagerFontFamily.almarai,
       ),
     ),
     // this for disabled button color
