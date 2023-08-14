@@ -5,16 +5,32 @@ import 'manager_fonts.dart';
 
 class ManagerTextThemeLight extends TextTheme {
   @override
-  TextStyle? get displayMedium => mediumTextStyle(
-    color: ManagerColors.white,
-    fontFamily: ManagerFontFamily.almarai,
-    fontSize: ManagerFontSize.s18,
-  );
+  TextStyle? get displaySmall => semiBoldTextStyle(
+        color: ManagerColors.primaryColor,
+        fontSize: ManagerFontSize.s14,
+      );
 
   @override
-  TextStyle? get displaySmall => mediumTextStyle(
-    color: ManagerColors.white,
-    fontFamily: ManagerFontFamily.almarai,
-    fontSize: ManagerFontSize.s12,
-  );
+  TextStyle? get displayMedium => regularTextStyle(
+        color: ManagerColors.textColor,
+        fontSize: ManagerFontSize.s14,
+      );
+
+  @override
+  TextStyle? get displayLarge => mediumTextStyle(
+        color: ManagerColors.white,
+        fontSize: ManagerFontSize.s12,
+      );
+
+  @override
+  TextStyle? get titleLarge => boldTextStyle(
+        color: ManagerColors.textColor,
+        fontSize: ManagerFontSize.s32,
+      );
+
+  @override
+  TextStyle? get titleSmall => boldTextStyle(
+        color: ManagerColors.white,
+        fontSize: ManagerFontSize.s18,
+      );
 }
