@@ -5,7 +5,6 @@ import '../../../../../core/widgets/main_button.dart';
 import '../../controller/on_boarding_controller.dart';
 import '../widgets/my_linear_progress_indicator.dart';
 import '../../../../../config/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/on_boarding_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,11 +49,10 @@ class OnBoardingScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SvgPicture.asset(
+                Image.asset(
                   controller.image,
-                  height: 300,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+                  // fit: BoxFit.cover,
+                  filterQuality: FilterQuality.high,
                 ),
                 Container(
                   height: ManagerHeight.h398,
