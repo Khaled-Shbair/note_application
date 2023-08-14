@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import 'config/dependency_injection.dart';
 import 'core/service/theme_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,14 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(Constants.designSizeWidth, Constants.designSizeHeight),
+      designSize: const Size(Constants.designSizeWidth, Constants.designSizeHeight),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
-          initialRoute: Routes.splashScreen,
+          initialRoute: Routes.onBoardingScreen,
           theme: _themeService.getThemeData(),
           themeMode: _themeService.getThemeMode(),
         );

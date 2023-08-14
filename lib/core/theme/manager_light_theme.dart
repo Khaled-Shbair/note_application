@@ -21,7 +21,6 @@ ThemeData managerLightThemeData() {
       titleTextStyle: mediumTextStyle(
         color: ManagerColors.black,
         fontSize: ManagerFontSize.s18,
-        fontFamily: ManagerFontFamily.almarai,
       ),
     ),
   );

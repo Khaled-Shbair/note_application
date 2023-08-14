@@ -7,14 +7,12 @@ class ManagerTextThemeDark extends TextTheme {
   @override
   TextStyle? get displayMedium => mediumTextStyle(
     color: ManagerColors.white,
-    fontFamily: ManagerFontFamily.almarai,
     fontSize: ManagerFontSize.s18,
   );
 
   @override
   TextStyle? get displaySmall => mediumTextStyle(
     color: ManagerColors.white,
-    fontFamily: ManagerFontFamily.almarai,
     fontSize: ManagerFontSize.s12,
   );
 }

@@ -9,4 +9,8 @@ class ManagerStrings {
       'Most beautiful note taking application.';
   static const String subTitleOnBoardingThree =
       'Making your content legible has never been easier.';
+  static const String skip = 'Skip';
+  static const String next = 'Next';
+  static const String getStarted = 'Get Started';
+  static const String back = 'Back';
 }
