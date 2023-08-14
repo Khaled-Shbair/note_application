@@ -12,4 +12,5 @@ class ManagerColors {
   static const Color disabledColorDark = Colors.white;
   static const Color white = Colors.white;
   static const Color black = Colors.black;
+  static const Color transparent = Colors.transparent;
 }
