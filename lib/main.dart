@@ -1,3 +1,4 @@
+import 'config/dependency_injection.dart';
 import 'core/service/theme_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'routes/route_generator.dart';
 import 'routes/routes.dart';
 
 void main() async {
+  await initModule();
   runApp(MyApp());
 }
 
