@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import 'config/dependency_injection.dart';
 import 'core/service/theme_service.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
           initialRoute: Routes.splashScreen,
