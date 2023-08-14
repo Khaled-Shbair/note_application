@@ -1,4 +1,4 @@
-// import '../../../../core/storage/local/shared_preferences/shared_preferences_controller.dart';
+import '../../../../core/storage/local/shared_preferences/shared_preferences_controller.dart';
 import '../../../../core/resources/manager_assets.dart';
 import '../../../../core/resources/manager_strings.dart';
 import '../../../../routes/routes.dart';
@@ -50,7 +50,10 @@ class OnBoardingController extends GetxController {
     update();
   }
 
-  void getStartedButton() => Get.offAllNamed(Routes.homeScreen);
+  void getStartedButton() async {
+    await Get.offAllNamed(Routes.homeScreen);
+    await SharedPreferencesController.setOnBoarding();
+  }
 
   bool isFirstPage() => currentPage == 0;
 
