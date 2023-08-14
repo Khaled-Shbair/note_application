@@ -21,14 +21,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(Constants.designSizeWidth, Constants.designSizeHeight),
+      designSize: const Size(Constants.designSizeWidth, Constants.designSizeHeight),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           onGenerateRoute: RouteGenerator.getRoute,
-          initialRoute: Routes.splashScreen,
+          initialRoute: Routes.onBoardingScreen,
           theme: _themeService.getThemeData(),
           themeMode: _themeService.getThemeMode(),
         );
