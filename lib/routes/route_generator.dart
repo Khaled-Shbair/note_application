@@ -1,3 +1,4 @@
+import '../config/dependency_injection.dart';
 import '../core/resources/manager_strings.dart';
 import 'package:flutter/material.dart';
 
@@ -8,6 +9,7 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.onBoardingScreen:
+        initOnBoarding();
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
 
       default:
