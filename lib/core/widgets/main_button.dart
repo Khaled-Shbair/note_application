@@ -9,6 +9,7 @@ class MainButton extends StatelessWidget {
     this.width,
     this.elevation,
     this.color,
+    this.radius,
     super.key,
   });
 
@@ -18,6 +19,7 @@ class MainButton extends StatelessWidget {
   final double? width;
   final double? elevation;
   final Color? color;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,9 @@ class MainButton extends StatelessWidget {
       minWidth: width.onNull(),
       elevation: elevation.onNull(),
       color: color.onNull(),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(radius.onNull()),
+      ),
       child: child,
     );
   }
