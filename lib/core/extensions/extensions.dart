@@ -64,3 +64,12 @@ extension NonNullBoolFunction on bool Function()? {
     return this!;
   }
 }
+
+extension NonNullTextDecoration on TextDecoration? {
+  TextDecoration onNull() {
+    if (this == null) {
+      return TextDecoration.none;
+    }
+    return this!;
+  }
+}
