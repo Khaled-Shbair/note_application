@@ -51,8 +51,8 @@ class OnBoardingController extends GetxController {
   }
 
   void getStartedButton() async {
-    await Get.offAllNamed(Routes.homeScreen);
     await SharedPreferencesController.setOnBoarding();
+    await Get.offAllNamed(Routes.homeScreen);
   }
 
   bool isFirstPage() => currentPage == 0;
