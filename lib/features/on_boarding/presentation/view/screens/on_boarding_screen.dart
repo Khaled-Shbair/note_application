@@ -17,8 +17,10 @@ class OnBoardingScreen extends StatelessWidget {
     return GetBuilder<OnBoardingController>(
       builder: (controller) {
         return Scaffold(
+          backgroundColor: ManagerColors.white,
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
+            backgroundColor: ManagerColors.white,
             automaticallyImplyLeading: false,
             actions: [
               Visibility(
