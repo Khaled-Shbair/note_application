@@ -10,11 +10,15 @@ import '../features/note/presentation/view/screens/hidden_notes_screen.dart';
 import '../features/note/presentation/view/screens/home_screen.dart';
 import '../features/note/presentation/view/screens/trash_notes_screen.dart';
 import '../features/on_boarding/presentation/view/screens/on_boarding_screen.dart';
+import '../features/splash/presentation/view/screens/splash_screen.dart';
 import 'routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
+      case Routes.splashScreen:
+        initSplash();
+        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case Routes.onBoardingScreen:
         initOnBoarding();
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
