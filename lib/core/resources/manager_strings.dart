@@ -13,4 +13,17 @@ class ManagerStrings {
   static const String next = 'Next';
   static const String getStarted = 'Get Started';
   static const String back = 'Back';
+  static const String darkTheme = 'Dark Theme';
+  static const String englishLanguage = 'English language';
+  static const String pleaseSelectColor = 'Please Select Color';
+  static const String pleaseWriteAnything = 'Please write anything';
+  static const String updatedSuccessfully = 'Updated successfully';
+  static const String search = 'Search';
+  static const String lightTheme = 'Light Theme';
+  static const String trash = 'Trash';
+  static const String favourites = 'Favourites';
+  static const String recentNotes = 'Recent Notes';
+  static const String notes = 'Notes';
+  static const String hidden = 'Hidden';
+  static const String allNotes = 'All Notes';
 }
