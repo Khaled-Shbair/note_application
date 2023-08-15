@@ -5,6 +5,7 @@ class Constants {
   static const double designSizeHeight = 844;
   static const double elevationAppBar = 0;
   static const int durationOnBoardingScreen = 1;
+  static const int durationSplashScreen = 3;
   static const double blurRadiusOfBoxShadowToBottomContainerInOnBoardingScreen =
       2.73;
   static const double
