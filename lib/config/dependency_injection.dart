@@ -5,13 +5,24 @@ import '../features/on_boarding/presentation/controller/on_boarding_controller.d
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../features/splash/presentation/controller/splash_controller.dart';
+
 Future<void> initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferencesController.initSharedPreferences();
   await DatabaseProvider.initDatabase();
 }
 
+initSplash() {
+  Get.put<SplashController>(SplashController());
+}
+
+disposeSplash() {
+  Get.delete<SplashController>();
+}
+
 initOnBoarding() {
+  disposeSplash();
   Get.put<OnBoardingController>(OnBoardingController());
 }
 
@@ -20,6 +31,7 @@ disposeOnBoarding() {
 }
 
 initHome() {
+  disposeSplash();
   disposeOnBoarding();
   Get.put<HomeController>(HomeController());
 }
