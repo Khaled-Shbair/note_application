@@ -229,7 +229,7 @@ class MyScaffoldApp extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Row(
+                                const Row(
                                   children: [],
                                 ),
                                 Align(
