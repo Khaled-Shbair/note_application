@@ -15,6 +15,7 @@ TextStyle _textStyle({
     fontSize: fontSize,
     color: color,
     decoration: decoration,
+    letterSpacing: 0,
   );
 }
 

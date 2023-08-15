@@ -12,8 +12,7 @@ ThemeData managerLightThemeData() {
     disabledColor: ManagerColors.disabledColorLight,
     primaryColor: ManagerColors.primaryColor,
     primaryColorLight: ManagerColors.primaryColorLight,
-    scaffoldBackgroundColor: ManagerColors.white,
-
+    scaffoldBackgroundColor: ManagerColors.scaffoldBackgroundColorLight,
     textTheme: ManagerTextThemeLight(),
     appBarTheme: AppBarTheme(
       backgroundColor: ManagerColors.appBarBackgroundColorLight,

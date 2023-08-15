@@ -17,6 +17,13 @@ class ManagerTextThemeLight extends TextTheme {
       );
 
   @override
+  TextStyle? get labelSmall => regularTextStyle(
+        color: ManagerColors.textColor.withOpacity(0.60),
+        fontSize: ManagerFontSize.s18,
+      );
+
+
+  @override
   TextStyle? get displayLarge => mediumTextStyle(
         color: ManagerColors.white,
         fontSize: ManagerFontSize.s12,
@@ -28,9 +35,16 @@ class ManagerTextThemeLight extends TextTheme {
         fontSize: ManagerFontSize.s32,
       );
 
+
   @override
   TextStyle? get titleSmall => boldTextStyle(
         color: ManagerColors.white,
         fontSize: ManagerFontSize.s18,
       );
+  @override
+  TextStyle? get titleMedium => boldTextStyle(
+    color: ManagerColors.black,
+    fontSize: ManagerFontSize.s16,
+  );
 }
+

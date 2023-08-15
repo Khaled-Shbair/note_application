@@ -4,7 +4,9 @@ import '../util/size_util.dart';
 class ManagerFontSize {
   static double s12 = SizeUtil.setFontSize(12);
   static double s14 = SizeUtil.setFontSize(14);
+  static double s16 = SizeUtil.setFontSize(14);
   static double s18 = SizeUtil.setFontSize(18);
+  static double s26 = SizeUtil.setFontSize(26);
   static double s32 = SizeUtil.setFontSize(32);
 }
 
