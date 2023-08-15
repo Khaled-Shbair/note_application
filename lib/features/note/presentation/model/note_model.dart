@@ -2,10 +2,12 @@ import '../../../../config/constants.dart';
 
 class NoteModel {
   late int id;
+  late String title;
   late String content;
   late String date;
   late String time;
-  late String color;
+  late int favourites;
+  late int hidden;
 
   NoteModel();
 
@@ -14,7 +16,9 @@ class NoteModel {
     content = map[Constants.contentNoteColumn];
     date = map[Constants.dateNoteColumn];
     time = map[Constants.timeNoteColumn];
-    color = map[Constants.colorNoteColumn];
+    title = map[Constants.titleNoteColumn];
+    favourites = map[Constants.favouritesNoteColumn];
+    hidden = map[Constants.hiddenNoteColumn];
   }
 
   Map<String, dynamic> toMap() {
@@ -22,7 +26,9 @@ class NoteModel {
       Constants.contentNoteColumn: content,
       Constants.dateNoteColumn: date,
       Constants.timeNoteColumn: time,
-      Constants.colorNoteColumn: color,
+      Constants.titleNoteColumn: title,
+      Constants.favouritesNoteColumn: favourites,
+      Constants.hiddenNoteColumn: hidden,
     };
   }
 }
