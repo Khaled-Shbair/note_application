@@ -38,10 +38,12 @@ class DatabaseProvider {
         await db.execute('''
         CREATE TABLE  ${Constants.noteTableName}(
             ${Constants.idNoteColumn} INTEGER PRIMARY KEY AUTOINCREMENT,
-            ${Constants.contentNoteColumn} TEXT NOT NULL,
+            ${Constants.titleNoteColumn} TEXT NOT NULL,
+            ${Constants.contentNoteColumn} TEXT,
             ${Constants.dateNoteColumn} TEXT NOT NULL,
             ${Constants.timeNoteColumn} TEXT NOT NULL,
-            ${Constants.colorNoteColumn} TEXT NOT NULL
+            ${Constants.favouritesNoteColumn} INTEGER NOT NULL,
+            ${Constants.hiddenNoteColumn} INTEGER NOT NULL
         )''');
         await db.execute('''
         CREATE TABLE  ${Constants.imageTableName}(
