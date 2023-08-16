@@ -4,6 +4,7 @@ class Constants {
   static const double designSizeWidth = 390;
   static const double designSizeHeight = 844;
   static const double elevationAppBar = 0;
+  static const double thicknessOfDividerInMyScaffoldApp = 0.5;
   static const int durationOnBoardingScreen = 1;
   static const double blurRadiusOfBoxShadowToBottomContainerInOnBoardingScreen =
       2.73;
@@ -34,10 +35,6 @@ class Constants {
   static const String timeNoteColumn = 'time';
   static const String favouritesNoteColumn = 'favourites';
   static const String hiddenNoteColumn = 'hidden';
-
-  // 2- Image table
-  static const String imageTableName = 'images';
-  static const String idImageColumn = 'id';
-  static const String noteIdImageColumn = 'id_note';
-  static const String pathImageColumn = 'path_image';
+  static const String trashNoteColumn = 'trash';
+  static const String imageNoteColumn = 'image';
 }
