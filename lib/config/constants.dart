@@ -6,6 +6,7 @@ class Constants {
   static const double elevationAppBar = 0;
   static const double thicknessOfDividerInMyScaffoldApp = 0.5;
   static const int durationOnBoardingScreen = 1;
+  static const int durationSplashScreen = 3;
   static const double blurRadiusOfBoxShadowToBottomContainerInOnBoardingScreen =
       2.73;
   static const double

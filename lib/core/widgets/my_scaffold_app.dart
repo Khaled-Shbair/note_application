@@ -215,7 +215,7 @@ class MyScaffoldApp extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              child: Column(
+                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
