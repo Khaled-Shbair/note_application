@@ -19,6 +19,8 @@ class MyTextField extends StatelessWidget {
     this.bottom = 0.0,
     this.fontSizeHintText,
     this.onChanged,
+    this.isTitle = false,
+    this.isDescription = false,
     super.key,
   });
 
@@ -33,6 +35,8 @@ class MyTextField extends StatelessWidget {
   final double bottom;
   final double end;
   final bool filled;
+  final bool isTitle;
+  final bool isDescription;
   final Color? fillColor;
   final Function(String)? onChanged;
 
@@ -63,7 +67,11 @@ class MyTextField extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.labelSmall,
+        hintStyle: isTitle
+            ? Theme.of(context).textTheme.headlineMedium
+            : isDescription
+                ? Theme.of(context).textTheme.headlineSmall
+                : Theme.of(context).textTheme.labelSmall,
       ),
     );
   }

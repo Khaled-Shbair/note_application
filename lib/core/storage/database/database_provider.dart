@@ -43,14 +43,9 @@ class DatabaseProvider {
             ${Constants.dateNoteColumn} TEXT NOT NULL,
             ${Constants.timeNoteColumn} TEXT NOT NULL,
             ${Constants.favouritesNoteColumn} INTEGER NOT NULL,
-            ${Constants.hiddenNoteColumn} INTEGER NOT NULL
-        )''');
-        await db.execute('''
-        CREATE TABLE  ${Constants.imageTableName}(
-            ${Constants.idImageColumn} INTEGER PRIMARY KEY AUTOINCREMENT,
-            ${Constants.pathImageColumn} TEXT NOT NULL,
-            ${Constants.noteIdImageColumn} INTEGER,
-            FOREIGN KEY (${Constants.noteIdImageColumn}) REFERENCES ${Constants.noteTableName} (${Constants.idNoteColumn})
+            ${Constants.hiddenNoteColumn} INTEGER NOT NULL,
+            ${Constants.trashNoteColumn} INTEGER NOT NULL,
+            ${Constants.imageNoteColumn} TEXT
         )''');
       },
       onUpgrade: (db, oldVersion, newVersion) {},

@@ -26,4 +26,7 @@ class ManagerStrings {
   static const String notes = 'Notes';
   static const String hidden = 'Hidden';
   static const String allNotes = 'All Notes';
+  static const String title = 'Title';
+  static const String description = 'Description';
+
 }
