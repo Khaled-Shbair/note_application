@@ -7,9 +7,11 @@ import 'package:get/get.dart';
 
 import '../features/splash/presentation/controller/splash_controller.dart';
 
+SharedPreferencesController _sharedPref = SharedPreferencesController();
+
 Future<void> initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPreferencesController.initSharedPreferences();
+  await _sharedPref.initSharedPreferences();
   await DatabaseProvider.initDatabase();
 }
 

@@ -5,6 +5,9 @@ import '../../../../routes/routes.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {
+  final SharedPreferencesController _sharedPreferences =
+      SharedPreferencesController();
+
   static OnBoardingController get to => Get.find();
   int currentPage = 0;
 
@@ -51,7 +54,7 @@ class OnBoardingController extends GetxController {
   }
 
   void getStartedButton() async {
-    await SharedPreferencesController.setOnBoarding();
+    await _sharedPreferences.setOnBoarding();
     await Get.offAllNamed(Routes.homeScreen);
   }
 
