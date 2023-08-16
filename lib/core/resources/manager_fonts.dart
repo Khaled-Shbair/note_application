@@ -6,6 +6,8 @@ class ManagerFontSize {
   static double s14 = SizeUtil.setFontSize(14);
   static double s16 = SizeUtil.setFontSize(14);
   static double s18 = SizeUtil.setFontSize(18);
+  static double s20 = SizeUtil.setFontSize(20);
+  static double s22 = SizeUtil.setFontSize(22);
   static double s26 = SizeUtil.setFontSize(26);
   static double s32 = SizeUtil.setFontSize(32);
 }
