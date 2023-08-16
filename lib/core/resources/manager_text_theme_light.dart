@@ -11,6 +11,12 @@ class ManagerTextThemeLight extends TextTheme {
       );
 
   @override
+  TextStyle? get headlineLarge => semiBoldTextStyle(
+        color: ManagerColors.textColor,
+        fontSize: ManagerFontSize.s16,
+      );
+
+  @override
   TextStyle? get displayMedium => regularTextStyle(
         color: ManagerColors.textColor,
         fontSize: ManagerFontSize.s14,
@@ -21,7 +27,6 @@ class ManagerTextThemeLight extends TextTheme {
         color: ManagerColors.textColor.withOpacity(0.60),
         fontSize: ManagerFontSize.s18,
       );
-
 
   @override
   TextStyle? get displayLarge => mediumTextStyle(
@@ -35,16 +40,34 @@ class ManagerTextThemeLight extends TextTheme {
         fontSize: ManagerFontSize.s32,
       );
 
+  @override
+  TextStyle? get headlineMedium => boldTextStyle(
+        color: ManagerColors.greyLightColor,
+        fontSize: ManagerFontSize.s26,
+      );
+
+  @override
+  TextStyle? get headlineSmall => regularTextStyle(
+        color: ManagerColors.greyLightColor,
+        fontSize: ManagerFontSize.s22,
+      );
 
   @override
   TextStyle? get titleSmall => boldTextStyle(
         color: ManagerColors.white,
         fontSize: ManagerFontSize.s18,
       );
+
   @override
   TextStyle? get titleMedium => boldTextStyle(
-    color: ManagerColors.black,
-    fontSize: ManagerFontSize.s16,
-  );
-}
+        color: ManagerColors.black,
+        fontSize: ManagerFontSize.s16,
+      );
 
+  @override
+  TextStyle? get bodySmall => lightTextStyle(
+        color: ManagerColors.textColor,
+        fontSize: ManagerFontSize.s12,
+        overflow: TextOverflow.ellipsis,
+      );
+}
