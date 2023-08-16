@@ -6,7 +6,9 @@ class NoteModel {
   late String content;
   late String date;
   late String time;
+  late String image;
   late int favourites;
+  late int trash;
   late int hidden;
 
   NoteModel();
@@ -19,6 +21,8 @@ class NoteModel {
     title = map[Constants.titleNoteColumn];
     favourites = map[Constants.favouritesNoteColumn];
     hidden = map[Constants.hiddenNoteColumn];
+    image = map[Constants.imageNoteColumn];
+    trash = map[Constants.trashNoteColumn];
   }
 
   Map<String, dynamic> toMap() {
@@ -29,6 +33,8 @@ class NoteModel {
       Constants.titleNoteColumn: title,
       Constants.favouritesNoteColumn: favourites,
       Constants.hiddenNoteColumn: hidden,
+      Constants.imageNoteColumn: image,
+      Constants.trashNoteColumn: trash,
     };
   }
 }
