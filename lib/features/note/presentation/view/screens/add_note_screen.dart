@@ -1,7 +1,10 @@
 import 'dart:io';
 
+import 'package:note_application/core/resources/manager_colors.dart';
+
 import '../../../../../core/resources/manager_fonts.dart';
 import '../../../../../core/resources/manager_sizes.dart';
+import '../../../../../core/resources/manager_strings.dart';
 import '../../controller/home_controller.dart';
 import '../../../../../config/constants.dart';
 import '../widgets/my_text_field.dart';
@@ -16,18 +19,22 @@ class AddNoteScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (controller) {
         return Scaffold(
+          resizeToAvoidBottomInset: true,
           appBar: AppBar(
             leading: IconButton(
               onPressed: controller.backToHomeScreen,
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.clear,
+                color: ManagerColors.primaryColor,
+              ),
             ),
             actions: [
               IconButton(
-                onPressed: controller.createNote,
-                icon: const Icon(Icons.save),
+                onPressed: () async => await controller.createNote(),
+                icon: const Icon(Icons.check),
               ),
               IconButton(
-                onPressed: () => controller.imageController.image(null),
+                onPressed: controller.image,
                 icon: const Icon(Icons.camera_alt),
               ),
             ],
@@ -36,41 +43,33 @@ class AddNoteScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Expanded(
-                flex: 3,
+                child: MyTextField(
+                  controller: controller.titleController,
+                  hintText: ManagerStrings.title,
+                  fontSizeTextInput: ManagerFontSize.s18,
+                  maxLines: Constants.maxLinesInContentNoteFiled,
+                  start: ManagerWidth.w24,
+                  end: ManagerWidth.w24,
+                  isTitle: true,
+                ),
+              ),
+              Expanded(
+                flex: 15,
                 child: MyTextField(
                   controller: controller.contentController,
-                  hintText: 'sub_title'.tr,
+                  hintText: ManagerStrings.description,
                   fontSizeTextInput: ManagerFontSize.s18,
                   maxLines: Constants.maxLinesInContentNoteFiled,
                   start: ManagerWidth.w24,
                   end: ManagerWidth.w24,
                 ),
               ),
-              if (controller.imageController.newImagesNote.isNotEmpty) ...{
-                Expanded(
-                  child: GridView.builder(
-                    padding: EdgeInsetsDirectional.only(
-                      start: ManagerWidth.w8,
-                      end: ManagerWidth.w8,
-                      bottom: ManagerHeight.h8,
-                    ),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 1,
-                      mainAxisSpacing: ManagerWidth.w8,
-                    ),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: controller.imageController.newImagesNote.length,
-                    itemBuilder: (context, index) {
-                      File file = File(controller
-                          .imageController.newImagesNote[index].image);
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(ManagerRadius.r16),
-                        child: Image.file(
-                          File(file.path),
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    },
+              if(controller.saveImage!=null)...{
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(ManagerRadius.r16),
+                  child: Image.file(
+                    File(controller.saveImage!.path),
+                    fit: BoxFit.cover,
                   ),
                 ),
               },

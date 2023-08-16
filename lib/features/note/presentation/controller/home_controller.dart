@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 
 import '../../../../core/helper/helper.dart';
 import '../../../../core/resources/manager_strings.dart';
@@ -7,13 +12,12 @@ import '../../../../routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../model/note_model.dart';
-import 'image_controller.dart';
 
 class HomeController extends GetxController with Helper {
   static HomeController get to => Get.find();
 
   late final NoteDatabaseController _noteDatabase = NoteDatabaseController();
-  late final ImageController imageController = ImageController();
+
   late TextEditingController contentController;
   late TextEditingController titleController;
   late TextEditingController searchController;
@@ -25,6 +29,7 @@ class HomeController extends GetxController with Helper {
   bool englishLanguage = false;
   bool favourites = false;
   bool hidden = false;
+  int? nodeId;
 
   List<NoteModel> get searchNotes => _searchNotes;
 
@@ -32,7 +37,6 @@ class HomeController extends GetxController with Helper {
   void onInit() {
     super.onInit();
     _readAllNote();
-    imageController.readAllImages();
     contentController = TextEditingController();
     searchController = TextEditingController();
     titleController = TextEditingController();
@@ -43,24 +47,25 @@ class HomeController extends GetxController with Helper {
   void onClose() {
     contentController.dispose();
     searchController.dispose();
+    titleController.dispose();
     super.onClose();
   }
 
   Future<void> createNote() async {
-    if (contentController.text.isNotEmpty) {
+    if (titleController.text.isNotEmpty) {
       NoteModel note = NoteModel();
       note.favourites = favourites == true ? 1 : 0;
       note.hidden = hidden == true ? 1 : 0;
-
       note.content = contentController.text;
       note.title = titleController.text;
+      note.image = saveImage != null ? saveImage!.path : '';
       note.date = _getCurrentDate();
       note.time = _getCurrentTime();
       int newRowId = await _noteDatabase.create(note);
       if (newRowId != 0) {
+        nodeId = newRowId;
         note.id = newRowId;
         _allNotes.add(note);
-        imageController.addNewImage();
         backToHomeScreen();
       }
     } else {
@@ -73,7 +78,6 @@ class HomeController extends GetxController with Helper {
 
   Future<void> backToHomeScreen() async {
     Get.back();
-    imageController.clearList();
     contentController.text = '';
     titleController.text = '';
     favourites = false;
@@ -155,13 +159,24 @@ class HomeController extends GetxController with Helper {
     update();
   }
 
-  void changeToEnglishLanguage() async {
-    // if (_englishLanguage.value) {
-    //   await Get.updateLocale(const Locale(Constants.arabicLanguage));
-    //   SharedPreferencesController.setLanguage(Constants.arabicLanguage);
-    // } else {
-    //   await Get.updateLocale(const Locale(Constants.englishLanguage));
-    //   SharedPreferencesController.setLanguage(Constants.arabicLanguage);
-    // }
+  //////////////////////////////////////////////////////////////////////
+  File? file;
+  File? saveImage;
+
+  void image() async {
+    final picker = ImagePicker();
+    final imageFile = await picker.pickImage(
+      source: ImageSource.camera,
+      maxHeight: 600,
+    );
+    if (imageFile != null) {
+      file = File(imageFile.path);
+    }
+    Directory directory = await getApplicationDocumentsDirectory();
+    final fileName = path.basename(imageFile!.path);
+    saveImage = await file!.copy('${directory.path}/$fileName');
+    update();
   }
+
+//////////////////////////////////////////////////////////////////////
 }
