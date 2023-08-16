@@ -8,6 +8,8 @@ TextStyle _textStyle({
   required String fontFamily,
   required double fontSize,
   TextDecoration? decoration,
+  double? letterSpacing,
+  TextOverflow? overflow,
 }) {
   return TextStyle(
     fontWeight: fontWeight,
@@ -15,7 +17,8 @@ TextStyle _textStyle({
     fontSize: fontSize,
     color: color,
     decoration: decoration,
-    letterSpacing: 0,
+    letterSpacing: letterSpacing.onNull(),
+    overflow: overflow,
   );
 }
 
@@ -23,12 +26,14 @@ TextStyle lightTextStyle({
   required Color color,
   required double fontSize,
   TextDecoration? decoration,
+  TextOverflow? overflow,
 }) {
   return _textStyle(
     color: color,
     fontFamily: ManagerFontFamily.nunitoSans,
     fontSize: fontSize,
     decoration: decoration.onNull(),
+    overflow: overflow,
   );
 }
 
