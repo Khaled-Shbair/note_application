@@ -38,6 +38,8 @@ export '/core/resources/manager_text_theme_light.dart';
 export '/core/resources/manager_text_theme_dark.dart';
 export '/core/theme/manager_light_theme.dart';
 export '/core/storage/database/database_operations.dart';
+export '/core/widgets/image_of_note.dart';
+export '/core/widgets/view_list_notes.dart';
 
 // features file
 export '/features/note/presentation/view/widgets/my_text_field.dart';
