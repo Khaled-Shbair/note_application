@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import '/config/all_imports.dart';
 
 class FavouriteNotesScreen extends StatelessWidget {
@@ -5,8 +7,16 @@ class FavouriteNotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyScaffoldApp(
-      isFavouritesScreen: true,
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return MyScaffoldApp(
+          isFavouritesScreen: true,
+          widget: ViewListNotes(
+            loading: controller.loading,
+            notes: controller.favouritesNotes,
+          ),
+        );
+      },
     );
   }
 }
