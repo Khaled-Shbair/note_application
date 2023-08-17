@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import '/config/all_imports.dart';
 
 class HiddenNotesScreen extends StatelessWidget {
@@ -5,8 +7,16 @@ class HiddenNotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyScaffoldApp(
-      isHiddenScreen: true,
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return MyScaffoldApp(
+          isHiddenScreen: true,
+          widget: ViewListNotes(
+            loading: controller.loading,
+            notes: controller.hiddenNotes,
+          ),
+        );
+      },
     );
   }
 }
