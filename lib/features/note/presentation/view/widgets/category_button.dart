@@ -1,10 +1,13 @@
+import 'package:get/get.dart';
+
 import '/config/all_imports.dart';
 
 class CategoryButton extends StatelessWidget {
   const CategoryButton({
     required this.color,
-    required this.onPressed,
     required this.text,
+    required this.isHomeScreen,
+    required this.route,
     this.image,
     this.isClick = false,
     this.icon,
@@ -15,15 +18,18 @@ class CategoryButton extends StatelessWidget {
   final String? image;
   final Color color;
   final String text;
-  final Function() onPressed;
   final bool isClick;
+  final String route;
+  final bool isHomeScreen;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: InkWell(
         borderRadius: BorderRadius.circular(ManagerRadius.r10),
-        onTap: onPressed,
+        onTap: () async {
+          isHomeScreen ? await Get.toNamed(route) : await Get.offNamed(route);
+        },
         child: Container(
           height: ManagerHeight.h50,
           padding: EdgeInsetsDirectional.only(
