@@ -82,11 +82,11 @@ class MyScaffoldApp extends StatelessWidget {
                   MyTextField(
                     controller: controller.searchController,
                     keyboardType: TextInputType.text,
+                    hintTextStyle: Theme.of(context).textTheme.labelSmall,
                     onChanged: (value) {
                       controller.searchNote(value);
                     },
                     hintText: ManagerStrings.search,
-                    fontSizeTextInput: ManagerFontSize.s14,
                     filled: true,
                     fillColor: ManagerColors.white,
                     top: ManagerHeight.h10,

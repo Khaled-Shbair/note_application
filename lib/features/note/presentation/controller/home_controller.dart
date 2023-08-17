@@ -208,6 +208,7 @@ class HomeController extends GetxController with Helper {
     trashNotes = _allNotes.where((note) => note.trash == 1).toList();
     update();
   }
+
   void hiddenNote() {
     loading = true;
     hiddenNotes = _allNotes.where((note) => note.hidden == 1).toList();

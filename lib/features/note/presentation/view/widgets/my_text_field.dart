@@ -4,7 +4,8 @@ class MyTextField extends StatelessWidget {
   const MyTextField({
     required this.hintText,
     required this.controller,
-    required this.fontSizeTextInput,
+    this.inputTextStyle,
+    this.hintTextStyle,
     this.fillColor,
     this.filled = false,
     this.maxLines,
@@ -13,27 +14,26 @@ class MyTextField extends StatelessWidget {
     this.start = 0.0,
     this.top = 0.0,
     this.bottom = 0.0,
-    this.fontSizeHintText,
     this.onChanged,
-    this.isTitle = false,
-    this.isDescription = false,
     super.key,
   });
 
-  final String hintText;
-  final TextEditingController controller;
-  final double fontSizeTextInput;
-  final double? fontSizeHintText;
-  final TextInputType keyboardType;
-  final int? maxLines;
   final double start;
   final double top;
   final double bottom;
   final double end;
+
   final bool filled;
-  final bool isTitle;
-  final bool isDescription;
   final Color? fillColor;
+
+  final TextEditingController controller;
+  final TextInputType keyboardType;
+  final TextStyle? inputTextStyle;
+  final int? maxLines;
+
+  final String hintText;
+  final TextStyle? hintTextStyle;
+
   final Function(String)? onChanged;
 
   @override
@@ -44,11 +44,7 @@ class MyTextField extends StatelessWidget {
       onChanged: onChanged,
       cursorColor: ManagerColors.black,
       maxLines: maxLines,
-      style: TextStyle(
-        fontSize: fontSizeTextInput,
-        color: ManagerColors.black,
-        fontWeight: ManagerFontWeight.w400,
-      ),
+      style: inputTextStyle,
       decoration: InputDecoration(
         contentPadding: EdgeInsetsDirectional.only(
           start: start,
@@ -63,11 +59,7 @@ class MyTextField extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
         hintText: hintText,
-        hintStyle: isTitle
-            ? Theme.of(context).textTheme.headlineMedium
-            : isDescription
-                ? Theme.of(context).textTheme.headlineSmall
-                : Theme.of(context).textTheme.labelSmall,
+        hintStyle: hintTextStyle,
       ),
     );
   }

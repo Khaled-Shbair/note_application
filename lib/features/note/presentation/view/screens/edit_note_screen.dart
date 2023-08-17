@@ -44,11 +44,9 @@ class EditNoteScreen extends StatelessWidget {
                 child: MyTextField(
                   controller: controller.titleController,
                   hintText: ManagerStrings.title,
-                  fontSizeTextInput: ManagerFontSize.s18,
                   maxLines: Constants.maxLinesInContentNoteFiled,
                   start: ManagerWidth.w24,
                   end: ManagerWidth.w24,
-                  isTitle: true,
                 ),
               ),
               Expanded(
@@ -56,7 +54,6 @@ class EditNoteScreen extends StatelessWidget {
                 child: MyTextField(
                   controller: controller.contentController,
                   hintText: ManagerStrings.description,
-                  fontSizeTextInput: ManagerFontSize.s18,
                   maxLines: Constants.maxLinesInContentNoteFiled,
                   start: ManagerWidth.w24,
                   end: ManagerWidth.w24,
