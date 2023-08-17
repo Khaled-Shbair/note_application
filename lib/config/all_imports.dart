@@ -44,6 +44,7 @@ export '/core/widgets/select_deleted.dart';
 export '/core/widgets/container_shape_of_note.dart';
 export '/core/widgets/loading_indicator.dart';
 export '/core/widgets/container_shape_of_no_data.dart';
+export '/core/widgets/my_floating_action_button.dart';
 
 // features file
 export '/features/note/presentation/view/widgets/my_text_field.dart';
