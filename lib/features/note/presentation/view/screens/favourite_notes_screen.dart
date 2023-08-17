@@ -9,11 +9,13 @@ class FavouriteNotesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller) {
+        controller.favouriteNote();
         return MyScaffoldApp(
           isFavouritesScreen: true,
           widget: ViewListNotes(
             loading: controller.loading,
             notes: controller.favouritesNotes,
+            color: ManagerColors.yellowColor_30,
           ),
         );
       },

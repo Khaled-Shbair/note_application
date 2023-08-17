@@ -72,8 +72,7 @@ class OnBoardingScreen extends StatelessWidget {
                         ),
                         blurRadius: Constants
                             .blurRadiusOfBoxShadowToBottomContainerInOnBoardingScreen,
-                        spreadRadius: Constants
-                            .spreadRadiusOfBoxShadowToBottomContainerInOnBoardingScreen,
+                        spreadRadius: Constants.spreadRadius,
                       ),
                       BoxShadow(
                         color: ManagerColors.shadowColor,
@@ -85,8 +84,7 @@ class OnBoardingScreen extends StatelessWidget {
                         ),
                         blurRadius: Constants
                             .blurRadiusOfBoxShadowToBottomContainerInOnBoardingScreen,
-                        spreadRadius: Constants
-                            .spreadRadiusOfBoxShadowToBottomContainerInOnBoardingScreen,
+                        spreadRadius: Constants.spreadRadius,
                       ),
                     ],
                   ),

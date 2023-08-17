@@ -10,6 +10,10 @@ class AddNoteScreen extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           resizeToAvoidBottomInset: true,
+          floatingActionButton: MyFloatingActionButton(
+            onPressed: controller.openCamera,
+            icon: Icons.camera_alt,
+          ),
           appBar: AppBar(
             leading: IconButton(
               onPressed: controller.backToHomeScreen,
@@ -20,12 +24,14 @@ class AddNoteScreen extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                onPressed: () async => await controller.createNote(),
-                icon: const Icon(Icons.check),
+                onPressed: controller.changeFavourite,
+                icon: Icon(
+                  controller.favourites ? Icons.star : Icons.star_border,
+                ),
               ),
               IconButton(
-                onPressed: controller.openCamera,
-                icon: const Icon(Icons.camera_alt),
+                onPressed: () async => await controller.createNote(),
+                icon: const Icon(Icons.check),
               ),
             ],
           ),

@@ -40,6 +40,11 @@ export '/core/theme/manager_light_theme.dart';
 export '/core/storage/database/database_operations.dart';
 export '/core/widgets/image_of_note.dart';
 export '/core/widgets/view_list_notes.dart';
+export '/core/widgets/select_deleted.dart';
+export '/core/widgets/container_shape_of_note.dart';
+export '/core/widgets/loading_indicator.dart';
+export '/core/widgets/container_shape_of_no_data.dart';
+export '/core/widgets/my_floating_action_button.dart';
 
 // features file
 export '/features/note/presentation/view/widgets/my_text_field.dart';

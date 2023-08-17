@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import '/config/all_imports.dart';
 
 class AllNotesScreen extends StatelessWidget {
@@ -5,6 +6,17 @@ class AllNotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return MyScaffoldApp(
+          isHiddenScreen: true,
+          widget: ViewListNotes(
+            loading: controller.loading,
+            notes: controller.searchNotes,
+            color: ManagerColors.greyColor_10,
+          ),
+        );
+      },
+    );
   }
 }
