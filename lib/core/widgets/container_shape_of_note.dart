@@ -7,6 +7,7 @@ class ContainerShapeOfNote extends StatelessWidget {
     required this.longPress,
     required this.note,
     required this.selectDeleted,
+    required this.color,
     super.key,
   });
 
@@ -14,6 +15,7 @@ class ContainerShapeOfNote extends StatelessWidget {
   final Function()? selectDeleted;
   final NoteModel note;
   final bool longPress;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -38,16 +40,19 @@ class ContainerShapeOfNote extends StatelessWidget {
           top: ManagerHeight.h10,
         ),
         decoration: BoxDecoration(
-          color: ManagerColors.white,
+          color: color,
           borderRadius: BorderRadius.circular(
             ManagerRadius.r10,
           ),
           boxShadow: [
             BoxShadow(
-              offset: const Offset(0, 0),
+              offset: const Offset(
+                Constants.xOffsetOfContainerShapeOfNote,
+                Constants.yOffsetOfContainerShapeOfNote,
+              ),
               color: ManagerColors.shadowColors,
-              blurRadius: 1,
-              spreadRadius: 0,
+              blurRadius: Constants.blurRadiusOfContainerShapeOfNote,
+              spreadRadius: Constants.spreadRadius,
             ),
           ],
         ),
@@ -66,7 +71,7 @@ class ContainerShapeOfNote extends StatelessWidget {
                     note.title,
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.headlineLarge,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
                 longPress == true
@@ -87,21 +92,17 @@ class ContainerShapeOfNote extends StatelessWidget {
                   note.content,
                   textAlign: TextAlign.start,
                   maxLines: note.maxLinesOfContentNote,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
             ),
             ImageOfNote(note.image),
-            SizedBox(height: ManagerHeight.h4),
+            SizedBox(height: ManagerHeight.h2),
             Align(
               alignment: AlignmentDirectional.bottomEnd,
               child: Text(
                 note.date,
-                style: TextStyle(
-                  fontSize: ManagerFontSize.s12,
-                  color: ManagerColors.c13,
-                  fontWeight: ManagerFontWeight.w400,
-                ),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             )
           ],

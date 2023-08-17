@@ -15,6 +15,7 @@ class HomeController extends GetxController with Helper {
   List<NoteModel> favouritesNotes = <NoteModel>[];
   List<NoteModel> hiddenNotes = <NoteModel>[];
   List<NoteModel> trashNotes = <NoteModel>[];
+  List<NoteModel> recentNotes = <NoteModel>[];
 
   bool loading = false;
   String currentDate = '';
@@ -52,11 +53,6 @@ class HomeController extends GetxController with Helper {
     update();
   }
 
-  void changeStatus(bool status) {
-    status = !status;
-    update();
-  }
-
   Future<void> backToHomeScreen() async {
     Get.back();
     contentController.text = '';
@@ -67,13 +63,18 @@ class HomeController extends GetxController with Helper {
     saveImage = null;
     file = null;
     currentDate = '';
+    favouritesNotes.clear();
+    trashNotes.clear();
+    hiddenNotes.clear();
     update();
   }
 
   Future<void> _readAllNote() async {
     loading = true;
     _allNotes = await _noteDatabase.read();
-    searchNotes = _allNotes;
+    _allNotes = _allNotes.reversed.toList();
+    recentNote();
+    searchNotes = _allNotes.where((note) => note.trash != 1).toList();
     loading = false;
     update();
   }
@@ -129,23 +130,25 @@ class HomeController extends GetxController with Helper {
     return convertedTimeToString;
   }
 
+  int _changeBoolToInt(bool value) => value == true ? 1 : 0;
+
   Future<void> updateNote(int id) async {
     NoteModel note = NoteModel();
     note.id = id;
-    note.favourites = favourites == true ? 1 : 0;
-    note.hidden = hidden == true ? 1 : 0;
+    note.favourites = _changeBoolToInt(favourites);
+    note.hidden = _changeBoolToInt(hidden);
+    note.trash = _changeBoolToInt(trash);
     note.title = titleController.text;
     note.content = contentController.text;
     note.date = _getCurrentDate();
     note.time = _getCurrentTime();
+    note.image = saveImage != null ? saveImage!.path : '';
+    note.maxLinesOfContentNote = saveImage != null ? 5 : 10;
 
     bool updated = await _noteDatabase.update(note);
     if (updated) {
-      showSnackBar(ManagerStrings.updatedSuccessfully);
-      loading = true;
       await _readAllNote();
-      loading = false;
-      await Get.offNamed(Routes.homeScreen);
+      backToHomeScreen();
     }
     update();
   }
@@ -153,8 +156,18 @@ class HomeController extends GetxController with Helper {
   Future<void> deleteNote(int id) async {
     bool deleted = await _noteDatabase.delete(id);
     if (deleted) {
-      //_notes.remove(element)
+      searchNotes.removeWhere(
+        (note) {
+          if (note.id == id) {
+            trashNotes.add(note);
+            return true;
+          } else {
+            return false;
+          }
+        },
+      );
     }
+    update();
   }
 
   void searchNote(String text) {
@@ -171,6 +184,41 @@ class HomeController extends GetxController with Helper {
     update();
   }
 
+  void recentNote() {
+    loading = true;
+    for (int i = 0; i <= _allNotes.length; i++) {
+      if (i < 10 && i < _allNotes.length) {
+        recentNotes.add(_allNotes[i]);
+      } else {
+        break;
+      }
+    }
+    loading = false;
+    update();
+  }
+
+  void favouriteNote() {
+    loading = true;
+    favouritesNotes = _allNotes.where((note) => note.favourites == 1).toList();
+    loading = false;
+  }
+
+  void trashNote() {
+    loading = true;
+    trashNotes = _allNotes.where((note) => note.trash == 1).toList();
+    update();
+  }
+  void hiddenNote() {
+    loading = true;
+    hiddenNotes = _allNotes.where((note) => note.hidden == 1).toList();
+    update();
+  }
+
+  void changeFavourite() {
+    favourites = !favourites;
+    update();
+  }
+
   void openCamera() async {
     final picker = ImagePicker();
     final imageFile = await picker.pickImage(
@@ -183,12 +231,6 @@ class HomeController extends GetxController with Helper {
     Directory directory = await getApplicationDocumentsDirectory();
     final fileName = basename(imageFile!.path);
     saveImage = await file!.copy('${directory.path}/$fileName');
-    update();
-  }
-
-  void trashNoteList() {
-    trashNotes;
-
     update();
   }
 }

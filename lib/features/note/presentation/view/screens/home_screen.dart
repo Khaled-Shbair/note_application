@@ -8,11 +8,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller) {
+        controller.recentNote;
         return MyScaffoldApp(
           isHomeScreen: true,
           widget: ViewListNotes(
             loading: controller.loading,
-            notes: controller.searchNotes,
+            notes: controller.recentNotes,
             onLongPress: controller.changeLongPress,
             longPress: controller.longPress,
 

@@ -9,11 +9,13 @@ class HiddenNotesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller) {
+        controller.hiddenNote();
         return MyScaffoldApp(
           isHiddenScreen: true,
           widget: ViewListNotes(
             loading: controller.loading,
             notes: controller.hiddenNotes,
+            color: ManagerColors.blueColor_10,
           ),
         );
       },
