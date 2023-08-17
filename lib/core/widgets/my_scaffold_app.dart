@@ -155,15 +155,12 @@ class MyScaffoldApp extends StatelessWidget {
                 ),
                 SizedBox(height: ManagerHeight.h16),
                 widget,
-                // MyGridView(
-                //   loading: controller.loading,
-                //   notes: controller.searchNotes,
-                // ),
               ],
             ),
           ),
         ),
       );
-    });
+    },
+    );
   }
 }
