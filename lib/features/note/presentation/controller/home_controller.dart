@@ -45,6 +45,18 @@ class HomeController extends GetxController with Helper {
     super.onClose();
   }
 
+  bool longPress = false;
+
+  void changeLongPress() {
+    longPress = !longPress;
+    update();
+  }
+
+  void changeStatus(bool status) {
+    status = !status;
+    update();
+  }
+
   Future<void> backToHomeScreen() async {
     Get.back();
     contentController.text = '';
