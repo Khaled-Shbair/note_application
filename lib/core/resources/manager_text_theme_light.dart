@@ -10,11 +10,11 @@ class ManagerTextThemeLight extends TextTheme {
         fontSize: ManagerFontSize.s14,
       );
 
-  @override
-  TextStyle? get headlineLarge => semiBoldTextStyle(
-        color: ManagerColors.textColor,
-        fontSize: ManagerFontSize.s16,
-      );
+  // @override
+  // TextStyle? get headlineLarge => semiBoldTextStyle(
+  //       color: ManagerColors.textColor,
+  //       fontSize: ManagerFontSize.s16,
+  //     );
 
   @override
   TextStyle? get displayMedium => regularTextStyle(
@@ -64,8 +64,15 @@ class ManagerTextThemeLight extends TextTheme {
         fontSize: ManagerFontSize.s16,
       );
 
+  // Container Shape Of Note
   @override
   TextStyle? get bodySmall => lightTextStyle(
+        color: ManagerColors.c13,
+        fontSize: ManagerFontSize.s12,
+      );
+
+  @override
+  TextStyle? get bodyMedium => lightTextStyle(
         color: ManagerColors.textColor,
         fontSize: ManagerFontSize.s12,
         overflow: TextOverflow.ellipsis,
@@ -73,7 +80,7 @@ class ManagerTextThemeLight extends TextTheme {
 
   @override
   TextStyle? get bodyLarge => lightTextStyle(
-        color: ManagerColors.primaryColor,
-        fontSize: ManagerFontSize.s26,
+        color: ManagerColors.textColor,
+        fontSize: ManagerFontSize.s16,
       );
 }
