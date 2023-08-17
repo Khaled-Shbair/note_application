@@ -28,5 +28,4 @@ class ManagerStrings {
   static const String allNotes = 'All Notes';
   static const String title = 'Title';
   static const String description = 'Description';
-
 }

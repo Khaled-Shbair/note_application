@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import '../../core/extensions/extensions.dart';
-
+import '/config/all_imports.dart';
 class MainButton extends StatelessWidget {
   const MainButton({
     required this.child,

@@ -1,7 +1,5 @@
-import '../../../../core/storage/local/shared_preferences/shared_preferences_controller.dart';
-import '../../../../config/constants.dart';
-import '../../../../routes/routes.dart';
 import 'package:get/get.dart';
+import '/config/all_imports.dart';
 
 class SplashController extends GetxController {
   final SharedPreferencesController _sharedPref = SharedPreferencesController();

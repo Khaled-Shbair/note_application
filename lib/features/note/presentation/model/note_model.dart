@@ -1,4 +1,4 @@
-import '../../../../config/constants.dart';
+import '/config/all_imports.dart';
 
 class NoteModel {
   late int id;
@@ -10,6 +10,7 @@ class NoteModel {
   late int favourites;
   late int trash;
   late int hidden;
+  late int maxLinesOfContentNote;
 
   NoteModel();
 
@@ -23,6 +24,7 @@ class NoteModel {
     hidden = map[Constants.hiddenNoteColumn];
     image = map[Constants.imageNoteColumn];
     trash = map[Constants.trashNoteColumn];
+    maxLinesOfContentNote = map[Constants.maxLinesOfContentNoteColumn];
   }
 
   Map<String, dynamic> toMap() {
@@ -35,6 +37,7 @@ class NoteModel {
       Constants.hiddenNoteColumn: hidden,
       Constants.imageNoteColumn: image,
       Constants.trashNoteColumn: trash,
+      Constants.maxLinesOfContentNoteColumn: maxLinesOfContentNote,
     };
   }
 }

@@ -1,8 +1,4 @@
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
-import '../../../../../config/constants.dart';
-import 'dart:io';
+import '/config/all_imports.dart';
 
 /*
    * Singleton design patten : user to take only one object from this class.
@@ -45,6 +41,7 @@ class DatabaseProvider {
             ${Constants.favouritesNoteColumn} INTEGER NOT NULL,
             ${Constants.hiddenNoteColumn} INTEGER NOT NULL,
             ${Constants.trashNoteColumn} INTEGER NOT NULL,
+            ${Constants.maxLinesOfContentNoteColumn} INTEGER NOT NULL,
             ${Constants.imageNoteColumn} TEXT
         )''');
       },

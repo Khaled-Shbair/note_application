@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import '/config/all_imports.dart';
+
 class AllNotesScreen extends StatelessWidget {
   const AllNotesScreen({super.key});
 

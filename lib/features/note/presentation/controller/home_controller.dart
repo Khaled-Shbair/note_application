@@ -1,17 +1,6 @@
-import 'dart:io';
-
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as path;
-
-import '../../../../core/helper/helper.dart';
-import '../../../../core/resources/manager_strings.dart';
-import '../../../../core/storage/database/controller/note_database_controller.dart';
-import '../../../../routes/routes.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../model/note_model.dart';
+import '/config/all_imports.dart';
 
 class HomeController extends GetxController with Helper {
   static HomeController get to => Get.find();
@@ -22,25 +11,32 @@ class HomeController extends GetxController with Helper {
   late TextEditingController titleController;
   late TextEditingController searchController;
   List<NoteModel> _allNotes = <NoteModel>[];
-  List<NoteModel> _searchNotes = <NoteModel>[];
+  List<NoteModel> searchNotes = <NoteModel>[];
   bool loading = false;
   String currentDate = '';
   bool darkMode = false;
   bool englishLanguage = false;
   bool favourites = false;
   bool hidden = false;
+  bool trash = false;
   int? nodeId;
 
-  List<NoteModel> get searchNotes => _searchNotes;
+  String? imageNote(String? image) {
+    if (image != null && image != '') {
+      File file = File(image);
+      return file.path;
+    }
+    return null;
+  }
 
   @override
   void onInit() {
     super.onInit();
+    getCurrentDate();
     _readAllNote();
     contentController = TextEditingController();
     searchController = TextEditingController();
     titleController = TextEditingController();
-    getCurrentDate();
   }
 
   @override
@@ -51,14 +47,37 @@ class HomeController extends GetxController with Helper {
     super.onClose();
   }
 
+  Future<void> backToHomeScreen() async {
+    Get.back();
+    contentController.text = '';
+    titleController.text = '';
+    favourites = false;
+    hidden = false;
+    trash = false;
+    saveImage = null;
+    file = null;
+    currentDate = '';
+    update();
+  }
+
+  Future<void> _readAllNote() async {
+    loading = true;
+    _allNotes = await _noteDatabase.read();
+    searchNotes = _allNotes;
+    loading = false;
+    update();
+  }
+
   Future<void> createNote() async {
     if (titleController.text.isNotEmpty) {
       NoteModel note = NoteModel();
       note.favourites = favourites == true ? 1 : 0;
       note.hidden = hidden == true ? 1 : 0;
+      note.trash = trash == true ? 1 : 0;
       note.content = contentController.text;
       note.title = titleController.text;
       note.image = saveImage != null ? saveImage!.path : '';
+      note.maxLinesOfContentNote = saveImage != null ? 5 : 10;
       note.date = _getCurrentDate();
       note.time = _getCurrentTime();
       int newRowId = await _noteDatabase.create(note);
@@ -73,15 +92,6 @@ class HomeController extends GetxController with Helper {
         ManagerStrings.pleaseWriteAnything,
       );
     }
-    update();
-  }
-
-  Future<void> backToHomeScreen() async {
-    Get.back();
-    contentController.text = '';
-    titleController.text = '';
-    favourites = false;
-    hidden = false;
     update();
   }
 
@@ -109,13 +119,6 @@ class HomeController extends GetxController with Helper {
     return convertedTimeToString;
   }
 
-  Future<void> deleteNote(int id) async {
-    bool deleted = await _noteDatabase.delete(id);
-    if (deleted) {
-      //_notes.remove(element)
-    }
-  }
-
   Future<void> updateNote(int id) async {
     NoteModel note = NoteModel();
     note.id = id;
@@ -137,19 +140,18 @@ class HomeController extends GetxController with Helper {
     update();
   }
 
-  Future<void> _readAllNote() async {
-    loading = true;
-    _allNotes = await _noteDatabase.read();
-    _searchNotes = _allNotes;
-    loading = false;
-    update();
+  Future<void> deleteNote(int id) async {
+    bool deleted = await _noteDatabase.delete(id);
+    if (deleted) {
+      //_notes.remove(element)
+    }
   }
 
   void searchNote(String text) {
     if (text.isEmpty) {
-      _searchNotes = _allNotes;
+      searchNotes = _allNotes;
     } else {
-      _searchNotes = _allNotes
+      searchNotes = _allNotes
           .where((note) => note.content
               .toString()
               .toLowerCase()
@@ -173,7 +175,7 @@ class HomeController extends GetxController with Helper {
       file = File(imageFile.path);
     }
     Directory directory = await getApplicationDocumentsDirectory();
-    final fileName = path.basename(imageFile!.path);
+    final fileName = basename(imageFile!.path);
     saveImage = await file!.copy('${directory.path}/$fileName');
     update();
   }

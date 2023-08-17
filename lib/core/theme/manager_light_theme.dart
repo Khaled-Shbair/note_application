@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../resources/manager_colors.dart';
-import '../resources/manager_fonts.dart';
-import '../resources/manager_styles.dart';
-import '../resources/manager_text_theme_light.dart';
+import '/config/all_imports.dart';
 
 ThemeData managerLightThemeData() {
   return ThemeData.light().copyWith(

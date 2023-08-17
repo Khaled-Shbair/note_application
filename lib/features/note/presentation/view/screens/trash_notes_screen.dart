@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '/config/all_imports.dart';
 
 class TrashNotesScreen extends StatelessWidget {
   const TrashNotesScreen({super.key});
@@ -7,5 +7,6 @@ class TrashNotesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-    );  }
+    );
+  }
 }

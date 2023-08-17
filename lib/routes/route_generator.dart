@@ -1,17 +1,4 @@
-import '../config/dependency_injection.dart';
-import '../core/resources/manager_strings.dart';
-import 'package:flutter/material.dart';
-
-import '../features/note/presentation/view/screens/add_note_screen.dart';
-import '../features/note/presentation/view/screens/all_notes_screen.dart';
-import '../features/note/presentation/view/screens/edit_note_screen.dart';
-import '../features/note/presentation/view/screens/favourite_notes_screen.dart';
-import '../features/note/presentation/view/screens/hidden_notes_screen.dart';
-import '../features/note/presentation/view/screens/home_screen.dart';
-import '../features/note/presentation/view/screens/trash_notes_screen.dart';
-import '../features/on_boarding/presentation/view/screens/on_boarding_screen.dart';
-import '../features/splash/presentation/view/screens/splash_screen.dart';
-import 'routes.dart';
+import '/config/all_imports.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {

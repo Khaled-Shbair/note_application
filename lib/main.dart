@@ -1,12 +1,6 @@
 import 'package:get/get.dart';
 
-import 'config/dependency_injection.dart';
-import 'core/service/theme_service.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/material.dart';
-import 'config/constants.dart';
-import 'routes/route_generator.dart';
-import 'routes/routes.dart';
+import '/config/all_imports.dart';
 
 void main() async {
   await initModule();

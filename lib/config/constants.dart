@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../../config/all_imports.dart';
 
 class Constants {
   static const double designSizeWidth = 390;
@@ -38,4 +38,5 @@ class Constants {
   static const String hiddenNoteColumn = 'hidden';
   static const String trashNoteColumn = 'trash';
   static const String imageNoteColumn = 'image';
+  static const String maxLinesOfContentNoteColumn = 'max_lines_of_content_note';
 }

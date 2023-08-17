@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../config/constants.dart';
-import '../resources/manager_colors.dart';
-import '../resources/manager_fonts.dart';
-import '../resources/manager_styles.dart';
-import '../resources/manager_text_theme_dark.dart';
+import '/config/all_imports.dart';
 
 ThemeData managerDarkThemeData() {
   return ThemeData.dark().copyWith(

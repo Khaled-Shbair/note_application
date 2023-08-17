@@ -1,8 +1,4 @@
-import '../../../../../core/resources/manager_colors.dart';
-import 'package:flutter/material.dart';
-
-import '../../../../../core/resources/manager_fonts.dart';
-import '../../../../../core/resources/manager_sizes.dart';
+import '/config/all_imports.dart';
 
 class MyTextField extends StatelessWidget {
   const MyTextField({

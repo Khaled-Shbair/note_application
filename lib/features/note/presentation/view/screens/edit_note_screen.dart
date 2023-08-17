@@ -1,15 +1,6 @@
-import 'dart:io';
-
-import '../../../../../core/resources/manager_colors.dart';
-import '../../../../../core/resources/manager_fonts.dart';
-import '../../../../../core/resources/manager_sizes.dart';
-import '../../../../../core/resources/manager_strings.dart';
-import '../../controller/home_controller.dart';
-import '../../../../../config/constants.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../widgets/my_text_field.dart';
+import '/config/all_imports.dart';
 
 class EditNoteScreen extends StatelessWidget {
   const EditNoteScreen({super.key});

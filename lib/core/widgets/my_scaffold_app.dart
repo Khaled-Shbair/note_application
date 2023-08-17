@@ -1,17 +1,5 @@
-import 'dart:io';
-
-import '../../config/constants.dart';
-import '../../features/note/presentation/controller/home_controller.dart';
-import '../../features/note/presentation/view/widgets/category_button.dart';
-import '../../features/note/presentation/view/widgets/my_text_field.dart';
-import '../resources/manager_strings.dart';
-import '../resources/manager_assets.dart';
-import '../resources/manager_colors.dart';
-import '../resources/manager_fonts.dart';
-import '../resources/manager_sizes.dart';
-import 'package:flutter/material.dart';
-import '../../routes/routes.dart';
 import 'package:get/get.dart';
+import '/config/all_imports.dart';
 
 class MyScaffoldApp extends StatelessWidget {
   const MyScaffoldApp({
@@ -166,7 +154,9 @@ class MyScaffoldApp extends StatelessWidget {
                   ),
                   SizedBox(height: ManagerHeight.h16),
                   if (controller.loading == true) ...{
-                    const Center(child: CircularProgressIndicator()),
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    ),
                   } else ...{
                     Expanded(
                       child: GridView.builder(
@@ -177,20 +167,20 @@ class MyScaffoldApp extends StatelessWidget {
                           crossAxisSpacing: ManagerWidth.w10,
                           mainAxisSpacing: ManagerHeight.h10,
                           childAspectRatio:
-                              ManagerWidth.w170 / ManagerHeight.h200,
+                              ManagerWidth.w220 / ManagerHeight.h250,
                         ),
                         itemCount: controller.searchNotes.length,
                         itemBuilder: (context, index) {
-                          File file = File(controller.searchNotes[index].image);
+                          var data = controller.searchNotes[index];
                           return InkWell(
                             onTap: () {
                               Get.toNamed(
                                 Routes.editNoteScreen,
                                 arguments: [
-                                  controller.searchNotes[index].id,
-                                  controller.searchNotes[index].content,
-                                  controller.searchNotes[index].title,
-                                  controller.searchNotes[index].image,
+                                  data.id,
+                                  data.content,
+                                  data.title,
+                                  data.image,
                                 ],
                               );
                             },
@@ -198,7 +188,7 @@ class MyScaffoldApp extends StatelessWidget {
                               padding: EdgeInsetsDirectional.only(
                                 start: ManagerWidth.w10,
                                 end: ManagerWidth.w10,
-                                bottom: ManagerHeight.h10,
+                                bottom: ManagerHeight.h8,
                                 top: ManagerHeight.h10,
                               ),
                               decoration: BoxDecoration(
@@ -215,12 +205,12 @@ class MyScaffoldApp extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                             child: Column(
+                              child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    controller.searchNotes[index].title,
+                                    data.title,
                                     textAlign: TextAlign.start,
                                     style: Theme.of(context)
                                         .textTheme
@@ -231,28 +221,24 @@ class MyScaffoldApp extends StatelessWidget {
                                     thickness: Constants
                                         .thicknessOfDividerInMyScaffoldApp,
                                   ),
-                                  SizedBox(
-                                    // height: ManagerHeight.h70,
-                                    child: Text(
-                                      controller.searchNotes[index].content,
-                                      textAlign: TextAlign.start,
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
+                                  Expanded(
+                                    child: SizedBox(
+                                      child: Text(
+                                        data.content,
+                                        textAlign: TextAlign.start,
+                                        maxLines: data.maxLinesOfContentNote,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
+                                      ),
                                     ),
                                   ),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(
-                                      ManagerRadius.r16,
-                                    ),
-                                    child: Image.file(
-                                      File(file.path),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                  imageNote(controller.imageNote(data.image)),
+                                  SizedBox(height: ManagerHeight.h4),
                                   Align(
                                     alignment: AlignmentDirectional.bottomEnd,
                                     child: Text(
-                                      controller.searchNotes[index].date,
+                                      data.date,
                                       style: TextStyle(
                                         fontSize: ManagerFontSize.s12,
                                         color: ManagerColors.c13,
@@ -275,5 +261,27 @@ class MyScaffoldApp extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget imageNote(String? image) {
+    if (image != null) {
+      return Padding(
+        padding: EdgeInsetsDirectional.only(
+          top: ManagerHeight.h2,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(
+            ManagerRadius.r16,
+          ),
+          child: Image.file(
+            File(image),
+            height: ManagerHeight.h80,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+        ),
+      );
+    }
+    return const SizedBox();
   }
 }

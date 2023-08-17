@@ -1,7 +1,4 @@
-import '../../../../../core/resources/manager_colors.dart';
-import '../../../../../core/resources/manager_sizes.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/material.dart';
+import '/config/all_imports.dart';
 
 class CategoryButton extends StatelessWidget {
   const CategoryButton({

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../resources/manager_colors.dart';
+import '/config/all_imports.dart';
 
 extension NonNullString on String? {
   String onNull() {

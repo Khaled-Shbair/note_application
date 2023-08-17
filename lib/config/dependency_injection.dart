@@ -1,11 +1,5 @@
-import '../core/storage/database/database_provider.dart';
-import '../core/storage/local/shared_preferences/shared_preferences_controller.dart';
-import '../features/note/presentation/controller/home_controller.dart';
-import '../features/on_boarding/presentation/controller/on_boarding_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../features/splash/presentation/controller/splash_controller.dart';
+import '../../config/all_imports.dart';
 
 SharedPreferencesController _sharedPref = SharedPreferencesController();
 

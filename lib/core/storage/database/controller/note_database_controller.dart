@@ -1,8 +1,4 @@
-import '../../../../../features/note/presentation/model/note_model.dart';
-import '../database_operations.dart';
-import '../database_provider.dart';
-import 'package:sqflite/sqflite.dart';
-import '../../../../../config/constants.dart';
+import '/config/all_imports.dart';
 
 class NoteDatabaseController extends DatabaseOperations<NoteModel> {
   final Database _database = DatabaseProvider().database;

@@ -1,15 +1,5 @@
-import 'dart:io';
-
-import 'package:note_application/core/resources/manager_colors.dart';
-
-import '../../../../../core/resources/manager_fonts.dart';
-import '../../../../../core/resources/manager_sizes.dart';
-import '../../../../../core/resources/manager_strings.dart';
-import '../../controller/home_controller.dart';
-import '../../../../../config/constants.dart';
-import '../widgets/my_text_field.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/config/all_imports.dart';
 
 class AddNoteScreen extends StatelessWidget {
   const AddNoteScreen({super.key});
@@ -64,7 +54,7 @@ class AddNoteScreen extends StatelessWidget {
                   end: ManagerWidth.w24,
                 ),
               ),
-              if(controller.saveImage!=null)...{
+              if (controller.saveImage != null) ...{
                 ClipRRect(
                   borderRadius: BorderRadius.circular(ManagerRadius.r16),
                   child: Image.file(

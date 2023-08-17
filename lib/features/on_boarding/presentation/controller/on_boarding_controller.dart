@@ -1,9 +1,5 @@
-import '../../../../core/storage/local/shared_preferences/shared_preferences_controller.dart';
-import '../../../../core/resources/manager_assets.dart';
-import '../../../../core/resources/manager_strings.dart';
-import '../../../../routes/routes.dart';
 import 'package:get/get.dart';
-
+import '/config/all_imports.dart';
 class OnBoardingController extends GetxController {
   final SharedPreferencesController _sharedPreferences =
       SharedPreferencesController();

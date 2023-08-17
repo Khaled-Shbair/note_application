@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '/config/all_imports.dart';
 
 class ManagerColors {
   static const Color primaryColor = Color(0XFF007AFF);
@@ -28,5 +28,4 @@ class ManagerColors {
   static const Color blueColor = Color(0XFF4E94F8);
 
   static const Color c13 = Color.fromRGBO(0, 0, 0, 0.3);
-
 }

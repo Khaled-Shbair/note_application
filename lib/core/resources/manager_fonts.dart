@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import '../util/size_util.dart';
+import '/config/all_imports.dart';
 
 class ManagerFontSize {
   static double s12 = SizeUtil.setFontSize(12);

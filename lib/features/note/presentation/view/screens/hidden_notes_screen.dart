@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../../../../core/widgets/my_scaffold_app.dart';
+import '/config/all_imports.dart';
 
 class HiddenNotesScreen extends StatelessWidget {
   const HiddenNotesScreen({super.key});

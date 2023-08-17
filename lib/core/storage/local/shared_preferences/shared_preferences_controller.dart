@@ -1,5 +1,4 @@
-import '../../../../core/extensions/extensions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '/config/all_imports.dart';
 
 enum PrefKeys {
   onBoarding,

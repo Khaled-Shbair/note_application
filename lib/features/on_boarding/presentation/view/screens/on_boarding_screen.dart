@@ -1,13 +1,5 @@
-import '../../../../../core/resources/manager_strings.dart';
-import '../../../../../core/resources/manager_colors.dart';
-import '../../../../../core/resources/manager_sizes.dart';
-import '../../../../../core/widgets/main_button.dart';
-import '../../controller/on_boarding_controller.dart';
-import '../widgets/my_linear_progress_indicator.dart';
-import '../../../../../config/constants.dart';
-import '../widgets/on_boarding_button.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '/config/all_imports.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
