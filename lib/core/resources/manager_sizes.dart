@@ -54,6 +54,7 @@ class ManagerIconSize {
   static const double s20 = 20;
   static const double s24 = 24;
   static const double s28 = 28;
+  static const double s80 = 80;
 }
 
 class ManagerOpacity {

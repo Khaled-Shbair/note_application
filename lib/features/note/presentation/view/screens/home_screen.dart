@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import '/config/all_imports.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,8 +6,16 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyScaffoldApp(
-      isHomeScreen: true,
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return MyScaffoldApp(
+          isHomeScreen: true,
+          widget: ViewListNotes(
+            loading: controller.loading,
+            notes: controller.searchNotes,
+          ),
+        );
+      },
     );
   }
 }

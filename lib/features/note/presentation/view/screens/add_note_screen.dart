@@ -24,7 +24,7 @@ class AddNoteScreen extends StatelessWidget {
                 icon: const Icon(Icons.check),
               ),
               IconButton(
-                onPressed: controller.image,
+                onPressed: controller.openCamera,
                 icon: const Icon(Icons.camera_alt),
               ),
             ],

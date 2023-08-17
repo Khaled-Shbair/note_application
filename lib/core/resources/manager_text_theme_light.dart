@@ -70,4 +70,10 @@ class ManagerTextThemeLight extends TextTheme {
         fontSize: ManagerFontSize.s12,
         overflow: TextOverflow.ellipsis,
       );
+
+  @override
+  TextStyle? get bodyLarge => lightTextStyle(
+        color: ManagerColors.primaryColor,
+        fontSize: ManagerFontSize.s26,
+      );
 }
