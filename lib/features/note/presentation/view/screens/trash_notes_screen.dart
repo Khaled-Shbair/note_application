@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 import '/config/all_imports.dart';
 
 class TrashNotesScreen extends StatelessWidget {
@@ -5,8 +7,16 @@ class TrashNotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+    return GetBuilder<HomeController>(
+      builder: (controller) {
+        return MyScaffoldApp(
+          isTrashScreen: true,
+          widget: ViewListNotes(
+            loading: controller.loading,
+            notes: controller.trashNotes,
+          ),
+        );
+      },
     );
   }
 }
