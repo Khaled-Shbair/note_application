@@ -12,6 +12,10 @@ class HomeController extends GetxController with Helper {
   late TextEditingController searchController;
   List<NoteModel> _allNotes = <NoteModel>[];
   List<NoteModel> searchNotes = <NoteModel>[];
+  List<NoteModel> favouritesNotes = <NoteModel>[];
+  List<NoteModel> hiddenNotes = <NoteModel>[];
+  List<NoteModel> trashNotes = <NoteModel>[];
+
   bool loading = false;
   String currentDate = '';
   bool darkMode = false;
@@ -20,19 +24,13 @@ class HomeController extends GetxController with Helper {
   bool hidden = false;
   bool trash = false;
   int? nodeId;
-
-  String? imageNote(String? image) {
-    if (image != null && image != '') {
-      File file = File(image);
-      return file.path;
-    }
-    return null;
-  }
+  File? file;
+  File? saveImage;
 
   @override
   void onInit() {
     super.onInit();
-    getCurrentDate();
+    _getDate();
     _readAllNote();
     contentController = TextEditingController();
     searchController = TextEditingController();
@@ -97,7 +95,7 @@ class HomeController extends GetxController with Helper {
 
   final DateTime _dateTime = DateTime.now();
 
-  void getCurrentDate() {
+  void _getDate() {
     currentDate = '${_dateTime.day.toString().padLeft(2, '0')} '
         '${DateFormat.MMMM().format(_dateTime)}, '
         '${_dateTime.year}';
@@ -161,11 +159,7 @@ class HomeController extends GetxController with Helper {
     update();
   }
 
-  //////////////////////////////////////////////////////////////////////
-  File? file;
-  File? saveImage;
-
-  void image() async {
+  void openCamera() async {
     final picker = ImagePicker();
     final imageFile = await picker.pickImage(
       source: ImageSource.camera,
@@ -180,5 +174,9 @@ class HomeController extends GetxController with Helper {
     update();
   }
 
-//////////////////////////////////////////////////////////////////////
+  void trashNoteList() {
+    trashNotes;
+
+    update();
+  }
 }
