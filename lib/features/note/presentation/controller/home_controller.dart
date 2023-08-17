@@ -70,6 +70,7 @@ class HomeController extends GetxController with Helper {
   }
 
   Future<void> _readAllNote() async {
+    _allNotes = [];
     loading = true;
     _allNotes = await _noteDatabase.read();
     _allNotes = _allNotes.reversed.toList();
@@ -96,6 +97,7 @@ class HomeController extends GetxController with Helper {
         nodeId = newRowId;
         note.id = newRowId;
         _allNotes.add(note);
+        _readAllNote();
         backToHomeScreen();
       }
     } else {
@@ -206,13 +208,11 @@ class HomeController extends GetxController with Helper {
   void trashNote() {
     loading = true;
     trashNotes = _allNotes.where((note) => note.trash == 1).toList();
-    update();
   }
 
   void hiddenNote() {
     loading = true;
     hiddenNotes = _allNotes.where((note) => note.hidden == 1).toList();
-    update();
   }
 
   void changeFavourite() {
