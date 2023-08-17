@@ -22,10 +22,14 @@ class ManagerColors {
   static const Color transparent = Colors.transparent;
   static const Color redColor = Color(0XFFEB4D3D);
   static const Color yellowColor = Color(0XFFF7CE45);
-  static Color yellowColor_30 = const Color(0XFFF7CE45).withOpacity(0.30);
-
-  static const Color greyColorIcon = Color(0XFF8E8E92);
   static const Color blueColor = Color(0XFF4E94F8);
+  static const Color greyColorIcon = Color(0XFF8E8E92);
+
+  static Color yellowColor_30 = yellowColor.withOpacity(0.30);
+  static Color blueColor_10 = blueColor.withOpacity(0.10);
+  static Color greyColor_10 = greyColorIcon.withOpacity(0.10);
+  static Color redColor_10 = redColor.withOpacity(0.10);
+
 
   static const Color c13 = Color.fromRGBO(0, 0, 0, 0.3);
 }
