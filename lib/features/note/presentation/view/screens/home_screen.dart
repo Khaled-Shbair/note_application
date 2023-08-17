@@ -13,6 +13,10 @@ class HomeScreen extends StatelessWidget {
           widget: ViewListNotes(
             loading: controller.loading,
             notes: controller.searchNotes,
+            onLongPress: controller.changeLongPress,
+            longPress: controller.longPress,
+
+            // onTapCancel: controller.changeLongPress,
           ),
         );
       },
