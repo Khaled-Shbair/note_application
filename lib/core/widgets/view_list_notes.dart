@@ -4,6 +4,7 @@ class ViewListNotes extends StatelessWidget {
   const ViewListNotes({
     required this.notes,
     required this.loading,
+    this.color = ManagerColors.white,
     this.onLongPress,
     this.onTap,
     this.longPress = false,
@@ -13,6 +14,7 @@ class ViewListNotes extends StatelessWidget {
   final List<NoteModel> notes;
   final bool loading;
   final bool longPress;
+  final Color color;
   final Function()? onLongPress;
   final Function()? onTap;
 
@@ -33,6 +35,7 @@ class ViewListNotes extends StatelessWidget {
           itemBuilder: (context, index) {
             return ContainerShapeOfNote(
               note: notes[index],
+              color: color,
               longPress: longPress,
               onLongPress: onLongPress,
               selectDeleted: onTap,
