@@ -35,40 +35,49 @@ class AddNoteScreen extends StatelessWidget {
               ),
             ],
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+          body: ListView(
+            physics: const NeverScrollableScrollPhysics(),
             children: [
-              Expanded(
-                child: MyTextField(
-                  controller: controller.titleController,
-                  hintText: ManagerStrings.title,
-                  fontSizeTextInput: ManagerFontSize.s18,
-                  maxLines: Constants.maxLinesInContentNoteFiled,
-                  start: ManagerWidth.w24,
-                  end: ManagerWidth.w24,
-                  isTitle: true,
-                ),
-              ),
-              Expanded(
-                flex: 15,
-                child: MyTextField(
-                  controller: controller.contentController,
-                  hintText: ManagerStrings.description,
-                  fontSizeTextInput: ManagerFontSize.s18,
-                  maxLines: Constants.maxLinesInContentNoteFiled,
-                  start: ManagerWidth.w24,
-                  end: ManagerWidth.w24,
-                ),
-              ),
               if (controller.saveImage != null) ...{
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(ManagerRadius.r16),
-                  child: Image.file(
-                    File(controller.saveImage!.path),
-                    fit: BoxFit.cover,
+                Padding(
+                  padding: EdgeInsetsDirectional.only(
+                    bottom: ManagerHeight.h20,
+                    start: ManagerWidth.w10,
+                    end: ManagerWidth.w10,
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(ManagerRadius.r16),
+                    child: Image.file(
+                      File(controller.saveImage!.path),
+                      fit: BoxFit.cover,
+                      height: 200,
+                      width: double.infinity,
+                    ),
                   ),
                 ),
               },
+              SizedBox(
+                height: ManagerHeight.h50,
+                child: MyTextField(
+                  keyboardType: TextInputType.text,
+                  controller: controller.titleController,
+                  hintText: ManagerStrings.title,
+                  start: ManagerWidth.w24,
+                  end: ManagerWidth.w24,
+                  inputTextStyle: Theme.of(context).textTheme.headlineLarge,
+                  hintTextStyle: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ),
+              SizedBox(height: ManagerHeight.h10),
+              MyTextField(
+                controller: controller.contentController,
+                hintText: ManagerStrings.description,
+                maxLines: Constants.maxLinesInContentNoteFiled,
+                start: ManagerWidth.w24,
+                end: ManagerWidth.w24,
+                hintTextStyle: Theme.of(context).textTheme.headlineSmall,
+                inputTextStyle: Theme.of(context).textTheme.labelSmall,
+              ),
             ],
           ),
         );
