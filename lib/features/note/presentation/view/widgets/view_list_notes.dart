@@ -26,7 +26,7 @@ class ViewListNotes extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+            crossAxisCount: Constants.crossAxisCountOfViewListNotes,
             crossAxisSpacing: ManagerWidth.w10,
             mainAxisSpacing: ManagerHeight.h10,
             childAspectRatio: ManagerWidth.w170 / ManagerHeight.h250,
