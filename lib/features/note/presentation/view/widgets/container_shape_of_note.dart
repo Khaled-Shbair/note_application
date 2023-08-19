@@ -12,7 +12,7 @@ class ContainerShapeOfNote extends StatelessWidget {
   });
 
   final Function()? onLongPress;
-  final Function()? selectDeleted;
+  final Function() selectDeleted;
   final NoteModel note;
   final bool longPress;
   final Color color;

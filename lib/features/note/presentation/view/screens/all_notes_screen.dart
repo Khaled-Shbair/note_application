@@ -14,6 +14,7 @@ class AllNotesScreen extends StatelessWidget {
             loading: controller.loading,
             notes: controller.searchNotes,
             color: ManagerColors.greyColor_10,
+            onTap: () {},
           ),
         );
       },

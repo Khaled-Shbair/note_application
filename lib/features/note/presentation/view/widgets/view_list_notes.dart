@@ -6,7 +6,7 @@ class ViewListNotes extends StatelessWidget {
     required this.loading,
     this.color = ManagerColors.white,
     this.onLongPress,
-    this.onTap,
+    required this.onTap,
     this.longPress = false,
     super.key,
   });
@@ -16,7 +16,7 @@ class ViewListNotes extends StatelessWidget {
   final bool longPress;
   final Color color;
   final Function()? onLongPress;
-  final Function()? onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
