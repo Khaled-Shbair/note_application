@@ -1,23 +1,27 @@
 import 'package:get/get.dart';
-
 import '/config/all_imports.dart';
 
 class EditNoteScreen extends StatelessWidget {
-  const EditNoteScreen({super.key});
+  const EditNoteScreen({required this.note, super.key});
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
-    var data = Get.arguments;
-
     return GetBuilder<HomeController>(
       builder: (controller) {
-        // controller.titleController.text = data[2];
-        // controller.contentController.text = data[1];
-        // controller.imagesOfNote(data[0]);
-        File file = File(data[3]);
-
+        controller.edit(
+          note.title,
+          note.content,
+          note.image,
+          note.favourites,
+        );
         return Scaffold(
           resizeToAvoidBottomInset: true,
+          floatingActionButton: MyFloatingActionButton(
+            onPressed: controller.openCamera,
+            icon: Icons.camera_alt,
+          ),
           appBar: AppBar(
             leading: IconButton(
               onPressed: controller.backToHomeScreen,
@@ -28,43 +32,45 @@ class EditNoteScreen extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                onPressed: () async => await controller.createNote(),
-                icon: const Icon(Icons.check),
+                onPressed: controller.changeFavourite,
+                icon: Icon(
+                  controller.favourites ? Icons.star : Icons.star_border,
+                ),
               ),
               IconButton(
-                onPressed: controller.openCamera,
-                icon: const Icon(Icons.camera_alt),
+                onPressed: () async => controller.updateNote(note.id),
+                icon: const Icon(Icons.check),
               ),
             ],
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+          body: ListView(
+            physics: const NeverScrollableScrollPhysics(),
             children: [
-              Expanded(
+              ShapeOfImageNote(
+                image: controller.saveImage.path,
+                height: ManagerHeight.h200,
+              ),
+              SizedBox(
+                height: ManagerHeight.h50,
                 child: MyTextField(
+                  keyboardType: TextInputType.text,
                   controller: controller.titleController,
                   hintText: ManagerStrings.title,
-                  maxLines: Constants.maxLinesInContentNoteFiled,
                   start: ManagerWidth.w24,
                   end: ManagerWidth.w24,
+                  inputTextStyle: Theme.of(context).textTheme.headlineLarge,
+                  hintTextStyle: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),
-              Expanded(
-                flex: 15,
-                child: MyTextField(
-                  controller: controller.contentController,
-                  hintText: ManagerStrings.description,
-                  maxLines: Constants.maxLinesInContentNoteFiled,
-                  start: ManagerWidth.w24,
-                  end: ManagerWidth.w24,
-                ),
-              ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(ManagerRadius.r16),
-                child: Image.file(
-                  File(file.path),
-                  fit: BoxFit.cover,
-                ),
+              SizedBox(height: ManagerHeight.h10),
+              MyTextField(
+                controller: controller.contentController,
+                hintText: ManagerStrings.description,
+                maxLines: Constants.maxLinesInContentNoteFiled,
+                start: ManagerWidth.w24,
+                end: ManagerWidth.w24,
+                hintTextStyle: Theme.of(context).textTheme.headlineSmall,
+                inputTextStyle: Theme.of(context).textTheme.labelSmall,
               ),
             ],
           ),
