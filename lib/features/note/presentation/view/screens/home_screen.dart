@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
             notes: controller.recentNotes,
             onLongPress: controller.changeLongPress,
             longPress: controller.longPress,
-
+            onTap: () {},
             // onTapCancel: controller.changeLongPress,
           ),
         );

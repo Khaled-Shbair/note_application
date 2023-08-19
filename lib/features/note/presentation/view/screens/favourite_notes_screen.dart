@@ -16,6 +16,7 @@ class FavouriteNotesScreen extends StatelessWidget {
             loading: controller.loading,
             notes: controller.favouritesNotes,
             color: ManagerColors.yellowColor_30,
+            onTap: () {},
           ),
         );
       },

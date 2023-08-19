@@ -19,14 +19,12 @@ class HomeController extends GetxController with Helper {
 
   bool loading = false;
   String currentDate = '';
-  bool darkMode = false;
-  bool englishLanguage = false;
   bool favourites = false;
   bool hidden = false;
   bool trash = false;
-  int? nodeId;
-  File? file;
-  File? saveImage;
+  File file = File('');
+  File saveImage = File('');
+  bool longPress = false;
 
   @override
   void onInit() {
@@ -46,8 +44,6 @@ class HomeController extends GetxController with Helper {
     super.onClose();
   }
 
-  bool longPress = false;
-
   void changeLongPress() {
     longPress = !longPress;
     update();
@@ -60,12 +56,13 @@ class HomeController extends GetxController with Helper {
     favourites = false;
     hidden = false;
     trash = false;
-    saveImage = null;
-    file = null;
+    saveImage = File('');
+    file = File('');
     currentDate = '';
     favouritesNotes.clear();
     trashNotes.clear();
     hiddenNotes.clear();
+    _getDate();
     update();
   }
 
@@ -75,7 +72,8 @@ class HomeController extends GetxController with Helper {
     _allNotes = await _noteDatabase.read();
     _allNotes = _allNotes.reversed.toList();
     recentNote();
-    searchNotes = _allNotes.where((note) => note.trash != 1).toList();
+    searchNotes =
+        _allNotes.where((note) => note.trash != 1 && note.hidden != 1).toList();
     loading = false;
     update();
   }
@@ -88,17 +86,14 @@ class HomeController extends GetxController with Helper {
       note.trash = trash == true ? 1 : 0;
       note.content = contentController.text;
       note.title = titleController.text;
-      note.image = saveImage != null ? saveImage!.path : '';
-      note.maxLinesOfContentNote = saveImage != null ? 5 : 10;
+      note.image = saveImage.path == '' ? saveImage.path : '';
+      note.maxLinesOfContentNote = saveImage.path == '' ? 5 : 10;
       note.date = _getCurrentDate();
       note.time = _getCurrentTime();
       int newRowId = await _noteDatabase.create(note);
       if (newRowId != 0) {
-        nodeId = newRowId;
         note.id = newRowId;
-        _allNotes.add(note);
-        _readAllNote();
-        backToHomeScreen();
+        _readAllNote().then((value) => backToHomeScreen());
       }
     } else {
       showSnackBar(
@@ -134,6 +129,8 @@ class HomeController extends GetxController with Helper {
 
   int _changeBoolToInt(bool value) => value == true ? 1 : 0;
 
+  bool changeIntToBool(int value) => value == 1 ? true : false;
+
   Future<void> updateNote(int id) async {
     NoteModel note = NoteModel();
     note.id = id;
@@ -144,8 +141,8 @@ class HomeController extends GetxController with Helper {
     note.content = contentController.text;
     note.date = _getCurrentDate();
     note.time = _getCurrentTime();
-    note.image = saveImage != null ? saveImage!.path : '';
-    note.maxLinesOfContentNote = saveImage != null ? 5 : 10;
+    note.image = saveImage.path != '' ? saveImage.path : '';
+    note.maxLinesOfContentNote = saveImage.path != '' ? 5 : 10;
 
     bool updated = await _noteDatabase.update(note);
     if (updated) {
@@ -187,10 +184,12 @@ class HomeController extends GetxController with Helper {
   }
 
   void recentNote() {
+    recentNotes = [];
     loading = true;
     for (int i = 0; i <= _allNotes.length; i++) {
       if (i < 10 && i < _allNotes.length) {
         recentNotes.add(_allNotes[i]);
+        update();
       } else {
         break;
       }
@@ -200,19 +199,24 @@ class HomeController extends GetxController with Helper {
   }
 
   void favouriteNote() {
+    favouritesNotes = [];
     loading = true;
     favouritesNotes = _allNotes.where((note) => note.favourites == 1).toList();
     loading = false;
   }
 
   void trashNote() {
+    trashNotes = [];
     loading = true;
     trashNotes = _allNotes.where((note) => note.trash == 1).toList();
+    loading = false;
   }
 
   void hiddenNote() {
+    trashNotes = [];
     loading = true;
     hiddenNotes = _allNotes.where((note) => note.hidden == 1).toList();
+    loading = false;
   }
 
   void changeFavourite() {
@@ -224,14 +228,28 @@ class HomeController extends GetxController with Helper {
     final picker = ImagePicker();
     final imageFile = await picker.pickImage(
       source: ImageSource.camera,
-      maxHeight: 600,
+      maxHeight: 2000,
+      maxWidth: double.infinity,
+      imageQuality: 100,
     );
     if (imageFile != null) {
       file = File(imageFile.path);
     }
     Directory directory = await getApplicationDocumentsDirectory();
     final fileName = basename(imageFile!.path);
-    saveImage = await file!.copy('${directory.path}/$fileName');
+    saveImage = await file.copy('${directory.path}/$fileName');
     update();
+  }
+
+  Future<void> edit(
+      String title, String content, String image, int favourite) async {
+    if (titleController.text.isEmpty &&
+        contentController.text.isEmpty &&
+        saveImage.path.isEmpty) {
+      titleController.text = title;
+      contentController.text = content;
+      favourites = changeIntToBool(favourite);
+      saveImage = File(image);
+    }
   }
 }

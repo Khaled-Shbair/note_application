@@ -3,15 +3,13 @@ import '/config/all_imports.dart';
 class SelectDeleted extends StatelessWidget {
   const SelectDeleted({
     required this.checked,
-    // required this.onTap,
-    this.onTap,
+    required this.onTap,
     super.key,
   });
 
   final bool checked;
 
-  // final Function() onTap;
-  final Function()? onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {

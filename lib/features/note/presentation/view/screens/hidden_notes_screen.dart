@@ -16,6 +16,7 @@ class HiddenNotesScreen extends StatelessWidget {
             loading: controller.loading,
             notes: controller.hiddenNotes,
             color: ManagerColors.blueColor_10,
+            onTap: () {},
           ),
         );
       },

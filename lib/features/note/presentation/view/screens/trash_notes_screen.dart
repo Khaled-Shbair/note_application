@@ -15,6 +15,7 @@ class TrashNotesScreen extends StatelessWidget {
             loading: controller.loading,
             notes: controller.trashNotes,
             color: ManagerColors.redColor_10,
+            onTap: () {},
           ),
         );
       },

@@ -38,24 +38,10 @@ class AddNoteScreen extends StatelessWidget {
           body: ListView(
             physics: const NeverScrollableScrollPhysics(),
             children: [
-              if (controller.saveImage != null) ...{
-                Padding(
-                  padding: EdgeInsetsDirectional.only(
-                    bottom: ManagerHeight.h20,
-                    start: ManagerWidth.w10,
-                    end: ManagerWidth.w10,
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(ManagerRadius.r16),
-                    child: Image.file(
-                      File(controller.saveImage!.path),
-                      fit: BoxFit.cover,
-                      height: 200,
-                      width: double.infinity,
-                    ),
-                  ),
-                ),
-              },
+              ShapeOfImageNote(
+                image: controller.saveImage!.path,
+                height: ManagerHeight.h200,
+              ),
               SizedBox(
                 height: ManagerHeight.h50,
                 child: MyTextField(
