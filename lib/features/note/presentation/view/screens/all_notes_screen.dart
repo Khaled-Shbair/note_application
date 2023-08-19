@@ -9,7 +9,7 @@ class AllNotesScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (controller) {
         return MyScaffoldApp(
-          isHiddenScreen: true,
+          isAllNotesScreen: true,
           widget: ViewListNotes(
             loading: controller.loading,
             notes: controller.searchNotes,
