@@ -13,7 +13,8 @@ class RouteGenerator {
         initHome();
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case Routes.editNoteScreen:
-        return MaterialPageRoute(builder: (_) => const EditNoteScreen());
+        var note = settings.arguments as NoteModel;
+        return MaterialPageRoute(builder: (_) => EditNoteScreen(note: note));
       case Routes.addNoteScreen:
         return MaterialPageRoute(builder: (_) => const AddNoteScreen());
       case Routes.favouriteNotesScreen:
