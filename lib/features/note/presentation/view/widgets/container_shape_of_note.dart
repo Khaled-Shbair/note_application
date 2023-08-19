@@ -21,15 +21,10 @@ class ContainerShapeOfNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onLongPress: onLongPress,
-      onTap: () {
-        Get.toNamed(
+      onTap: () async {
+        await Get.toNamed(
           Routes.editNoteScreen,
-          arguments: [
-            note.id,
-            note.content,
-            note.title,
-            note.image,
-          ],
+          arguments: note,
         );
       },
       child: Container(
@@ -96,7 +91,10 @@ class ContainerShapeOfNote extends StatelessWidget {
                 ),
               ),
             ),
-            ImageOfNote(note.image),
+            ShapeOfImageNote(
+              image: note.image,
+              height: ManagerHeight.h80,
+            ),
             SizedBox(height: ManagerHeight.h2),
             Align(
               alignment: AlignmentDirectional.bottomEnd,
