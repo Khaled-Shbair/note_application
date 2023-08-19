@@ -23,6 +23,7 @@ class Constants {
   static const double yOffsetOfBoxShadow2ToBottomContainerInOnBoardingScreen =
       1.37;
   static int maxLinesInContentNoteFiled = 1000;
+  static int crossAxisCountOfViewListNotes = 2;
 
   /// Constants Database properties
   static const String databaseName = 'db.sql';
