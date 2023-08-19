@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '/config/all_imports.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -9,10 +8,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<SplashController>(
       builder: (controller) {
-        return const Scaffold(
+        return Scaffold(
           backgroundColor: ManagerColors.white,
           resizeToAvoidBottomInset: true,
-          body: Center(),
+          body: Center(
+            child: SvgPicture.asset(
+              ManagerAssets.logo,
+              height: ManagerHeight.h170,
+            ),
+          ),
         );
       },
     );

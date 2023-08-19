@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '/config/all_imports.dart';
 
 void main() async {
